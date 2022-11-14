@@ -10,58 +10,58 @@ function App() {
   const [info, setInfo] = useState({})
   const [offset, setOffset] = useState(0)
 
-  const LIMIT = 12
+  const LIMIT = 12;
 
   const api = 'https://kitsu.io/api/edge/'
 
-  useEffect(()=>{
-    
-      setInfo({})
+  useEffect(() => {
+    setInfo({})
 
-      const query = {
-        page:{
-          limit: LIMIT,
-          offset,
-        }
+    const query = {
+      page: {
+        limit: LIMIT,
+        offset
       }
+    }
 
-      if(text){
-        query.filter = {
-          text,
-        };
-      }
+    if (text) {
+      query.filter = {
+        text
+      };
+    }
 
-      fetch(`${api}anime?${qs.stringify(query)}`)
-      .then((response)=> response.json())
-      .then((response)=>{
+    fetch(`${api}anime?${qs.stringify(query)}`)
+      .then((response) => response.json())
+      .then((response) => {
         setInfo(response);
       })
-    
-  },[ text, offset ])
+
+  }, [text, offset])
 
   return (
-    <div>
-      <h1>Animes:</h1>
-      <SearchInput value={text} onChange={(srt) => setText(srt)}/>
+    <div className='mainContainer'>
+      <nav className='nav'>
+        <h1>Pesquisa de Animes:</h1>
+        <SearchInput value={text} onChange={(srt) => setText(srt)} />
+      </nav>
       {text && !info.data && <span>Carregando...</span>}
-      {text && !info.data && <span>...</span>}
       {info.data && (
-        <ul>
-          {info.data.map((anime) =>(
-            <li key={anime.id}>
+        <ul className='animeList'>
+          {info.data.map((anime) => (
+            <li key={anime.id} className='animeCard'>
               <h3>{anime.attributes.canonicalTitle}</h3>
-              <img alt={anime.attributes.canonicalTitle} src={anime.attributes.posterImage.small}/>
+              <img alt={anime.attributes.canonicalTitle} src={anime.attributes.posterImage.small} />
             </li>
           ))}
         </ul>
       )}
-      { info.meta && (
-        <Pagination limit={LIMIT} 
-        total={info.meta.count} 
-        offset={offset}  
-        setOffset={setOffset}/>
+      {info.meta && (
+        <Pagination limit={LIMIT}
+          total={info.meta.count}
+          offset={offset}
+          setOffset={setOffset} />
       )}
-      
+
     </div>
   );
 }

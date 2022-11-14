@@ -1,0 +1,25 @@
+.pagesUl{
+    display: flex;
+    gap: 12px;
+    margin: 2% 0;
+}
+li{
+    list-style: none;
+}
+.pageBtn{
+    background-color: transparent;
+    border: solid 2px #ECB365;
+    padding: 2px 10px;
+    cursor: pointer;
+}
+.pageBtn:hover{
+    background-color: #ECB365;
+    color: #041C32;
+    cursor: pointer;
+}
+.pageBtnActive{
+    background-color: transparent;
+    border: solid 2px transparent;
+    padding: 2px 10px;
+    cursor: pointer;
+}

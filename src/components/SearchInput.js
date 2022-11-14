@@ -1,5 +1,6 @@
 import { useState } from "react"
 import useDebounce from "./usedebounce"
+import './searchInput.css'
 
 const SearchInput = ({ value, onChange }) =>{
 
