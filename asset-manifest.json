@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/animes-project/static/css/main.7a7ccdf2.css",
+    "main.js": "/animes-project/static/js/main.a7f28155.js",
+    "static/js/787.4fa38b0b.chunk.js": "/animes-project/static/js/787.4fa38b0b.chunk.js",
+    "index.html": "/animes-project/index.html",
+    "main.7a7ccdf2.css.map": "/animes-project/static/css/main.7a7ccdf2.css.map",
+    "main.a7f28155.js.map": "/animes-project/static/js/main.a7f28155.js.map",
+    "787.4fa38b0b.chunk.js.map": "/animes-project/static/js/787.4fa38b0b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7a7ccdf2.css",
+    "static/js/main.a7f28155.js"
+  ]
+}
