@@ -1,0 +1,15 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css");
+.modalHome{
+    width: fit-content;
+    padding: 10px;
+    border-radius: 50%;
+    position: fixed;
+    bottom: 2%;
+    left: 2%;
+    background-color: white;
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.521);
+  }
+  .modalHome,  .homeIcon{
+    color: black;
+    font-size: 2rem;
+  }

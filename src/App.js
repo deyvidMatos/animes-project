@@ -4,11 +4,14 @@ import SearchInput from './components/SearchInput';
 import { useEffect, useState } from 'react';
 import Pagination from './components/pagination';
 import qs from 'qs'
+import Loading from './components/loading';
+import HomeModal from './components/toHome';
 
 function App() {
   const [text, setText] = useState('')
   const [info, setInfo] = useState({})
   const [offset, setOffset] = useState(0)
+  const [isLoading, setIsLoading] = useState(true)
 
   const LIMIT = 12;
 
@@ -16,6 +19,7 @@ function App() {
 
   useEffect(() => {
     setInfo({})
+    setIsLoading(true)
 
     const query = {
       page: {
@@ -34,6 +38,7 @@ function App() {
       .then((response) => response.json())
       .then((response) => {
         setInfo(response);
+        setIsLoading(false);
       })
 
   }, [text, offset])
@@ -41,16 +46,16 @@ function App() {
   return (
     <div className='mainContainer'>
       <nav className='nav'>
-        <h1>Pesquisa de Animes:</h1>
+        <h1>Pesquise um Anime:</h1>
         <SearchInput value={text} onChange={(srt) => setText(srt)} />
       </nav>
-      {text && !info.data && <span>Carregando...</span>}
+      {isLoading && <Loading/>}
       {info.data && (
         <ul className='animeList'>
           {info.data.map((anime) => (
             <li key={anime.id} className='animeCard'>
-              <h3>{anime.attributes.canonicalTitle}</h3>
               <img alt={anime.attributes.canonicalTitle} src={anime.attributes.posterImage.small} />
+              <h3>{anime.attributes.canonicalTitle}</h3>
             </li>
           ))}
         </ul>
@@ -61,7 +66,7 @@ function App() {
           offset={offset}
           setOffset={setOffset} />
       )}
-
+      <HomeModal/>
     </div>
   );
 }
